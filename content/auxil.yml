@@ -1,0 +1,5 @@
+title: Rolf Vonhoff's Blog Auxiliary Pages
+sort_field: order
+sort_direction: asc
+index_route: /auxil
+entry_route: /auxil/{slug}

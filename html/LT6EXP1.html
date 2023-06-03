@@ -1,0 +1,1001 @@
+<html>
+<head>
+<title>LT6EXP.html</title>
+<!-- Created by Maple V Release 5, IBM INTEL NT -->
+</head>
+<body bgcolor="FFFFFF">
+<a name="MapleAutoBookmark1">
+<p align=center>
+</p>
+<p align=left>
+</p>
+<p align=center>
+<b><font color=#000000 size=5>Visualization of the Expansion Theorem</font></b>
+</p>
+<p align=center>
+<b><font color=#000000 size=5>for the Krall Polynomials</font></b>
+</p>
+<p align=center>
+<b><font color=#000000 size=5>in a Weighted Sobolev Space</font></b>
+</p>
+<p align=center>
+</p>
+<p align=left>
+</p>
+<p align=center>
+<font color=#000000 size=4>Rolf Vonhoff</font>
+</p>
+<p align=left>
+</p>
+<p align=center>
+<font color=#000000>March 11, 2000</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000 size=5>1. Synopsis:</font></u></b>
+<font color=#000000 size=5> </font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>The study of </font>
+<i><font color=#000000>orthogonal polynomials</font></i>
+<font color=#000000> within the framework of the </font>
+<i><font color=#000000>spectral theory of differential operators</font></i>
+<font color=#000000> brings together </font>
+<i><font color=#000000>two branches of mathematics in such a manner that advantages for development are to be discerned in both areas (</font></i>
+ </a><a href="#[EL]">[EL]</a><font color=#000000>, p. 21</font>
+<i><font color=#000000>)</font></i>
+<font color=#000000>. On the one hand, the classical differential operators with orthogonal polynomial solutions present excellent examples for the spectral theory of singular differential operators in Hilbert space, in which the eigenfunctions are explicitly known. On the other hand, we understand many properties of orthogonal polynomials better, if we observe that these polynomials are the eigenfunctions of an unbounded self-adjoint Hilbert space operator.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>In the paper </font>
+<a href="#[V2]">[V2]</a><font color=#000000> and in the present work we study the </font>
+<a href="#3.">Krall polynomials</a><font color=#000000> which have been discovered in 1981 by Lance L. Littlejohn (</font>
+<a href="#[L1]">[L1]</a><font color=#000000>). These polynomials are orthogonal both in a space L^2([-1,1],m) of Lebesgue-Stieltjes-integrable functions and in a </font>
+<a href="#4.">weighted Sobolev space</a><font color=#000000> W(-1,1) of the order three. On the interval (-1,1) the Krall polynomials are eigenfunctions of the </font>
+<a href="#5.">sixth-order Legendre type differential equation</a><font color=#000000>, which gives the connection to the spectral theory of singular differential operators. In </font>
+<a href="#[V2]">[V2]</a><font color=#000000> we have considered this differential operator in the weighted Sobolev space W(-1,1). Especially we have found a self-adjoint realization of the corresponding maximal operator by means of </font>
+<a href="#5.">two boundary conditions</a><font color=#000000>. As a main result we prove theorems on </font>
+<a href="#expansion thm. 1">eigenfunction expansions</a><font color=#000000> both with respect to the weighted Sobolev norm and with respect to locally uniform convergence. </font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>In this work we put the main focus on visualizing some of the results in </font>
+<a href="#[V2]">[V2]</a><font color=#000000>. The calculations and plots here are made with the program  Maple V Release 5, actually, this whole document is a Maple worksheet. At first, we take a look at the </font>
+<a href="#3.">Krall polynomials</a><font color=#000000> and display their graphs. After having introduced the </font>
+<a href="#4.">weighted Sobolev scalar product</a><font color=#000000> in the space W(-1,1) we define the </font>
+<a href="#5.">Fourier series</a><font color=#000000> corresponding to the Krall polynomials. We then </font>
+<a href="#Visualization 1">visualize</a><font color=#000000> the property of the Krall polynomials that their Fourier series approximates the functions in W(-1,1) locally uniformly and simultaneously up to the second derivative. Some </font>
+<a href="#6.">general remarks</a><font color=#000000> on the interplay of orthogonal polynomials and spectral theory with a few </font>
+<a href="#6.">historical notes</a><font color=#000000> conclude our work.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000 size=5>2. References:</font></u></b>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="[EL]">
+<b><font color=#000000>[EL]   </font></b>
+<font color=#000000>W.N. Everitt and L.L. Littlejohn: </font>
+<i><font color=#000000>Orthogonal Polynomials and Spectral Theory: A Survey</font></i>
+<font color=#000000>, Orthogonal Polynomials and their Applications, C. Brezinski, L. Gori and A. Ronveaux (Editors), Proceedings of the third International Symposium held in Erice, Italy 1990 (1991), pp. 21-55.</font>
+</p>
+<p align=left><a name="[ELLo]">
+<b><font color=#000000>[ELLo]   </font></b>
+<font color=#000000>W.N. Everitt, L.L. Littlejohn, and S.M. Loveland: </font>
+<i><font color=#000000>Some Properties of the Sixth-Order Legendre-Type Differential Expression</font></i>
+<font color=#000000>, Rendiconti di Matematica, Serie VII, Vol. 13 (1993), pp.773-799.</font>
+</p>
+<p align=left><a name="[L1]">
+<b><font color=#000000>[L1]   </font></b>
+<font color=#000000>Lance L. Littlejohn: </font>
+<i><font color=#000000>Nonclassical Orthogonal Polynomials and Differential Equations,</font></i>
+<font color=#000000> Ph. D. Thesis, The Pennsylvania State University, State College, PA, USA (1981).</font>
+</p>
+<p align=left><a name="[L2]">
+<b><font color=#000000>[L2]    </font></b>
+<font color=#000000>Lance L. Littlejohn: </font>
+<i><font color=#000000>The Krall Polynomials: A New Class of Orthogonal Polynomials,</font></i>
+<font color=#000000> Quaestiones Mathematicae, Vol. 5 (1982), pp. 255-265.</font>
+</p>
+<p align=left><a name="[LK]">
+<b><font color=#000000>[LK]   </font></b>
+<font color=#000000>Lance L. Littlejohn and Allan M. Krall, </font>
+<i><font color=#000000>Orthogonal Polynomials and Higher Order Singular Sturm-Liouville Systems,</font></i>
+<font color=#000000> Acta Applicandae Mathematicae 17 (1989), pp. 99-170.</font>
+</p>
+<p align=left><a name="[Lo]">
+<b><font color=#000000>[Lo]   </font></b>
+<font color=#000000>Susan Marie Loveland: </font>
+<i><font color=#000000>Spectral Analysis of the Legendre Equations</font></i>
+<font color=#000000>, Dissertation, Utah State University, Logan (1990).</font>
+</p>
+<p align=left><a name="[V1]">
+<b><font color=#000000>[V1]   </font></b>
+<font color=#000000>Rolf Vonhoff: </font>
+<i><font color=#000000>A Left-Definite Study of Legendre's Differential Equation and of the Fourth-Order Legendre Type Differential Equation,</font></i>
+<font color=#000000> to appear in Results in Mathematics, 42pp.</font>
+</p>
+<p align=left><a name="[V2]">
+<b><font color=#000000>[V2]   </font></b>
+<font color=#000000>Rolf Vonhoff: </font>
+<i><font color=#000000>The Sixth-Order Legendre Type Differential Operator in a Weighted Sobolev Space, </font></i>
+<font color=#000000>Preprint (2000), 32 pp.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="3.">
+<b><u><font color=#000000 size=5>3. The Krall Polynomials</font></u></b>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>The Krall polynomials have been discovered by Lance L. Littlejohn in 1981 and they are named after H.L. Krall (see </font>
+<a href="#[L1]">[L1]</a><font color=#000000> and </font>
+<a href="#[L2]">[L2]</a><font color=#000000>). Certain remarks indicate that these polynomials already had been discovered by H.L. Krall himself and that they were rediscovered by Littlejohn (cf. the note on p. 115 of the paper </font>
+<a href="#[LK]">[LK]</a><font color=#000000> by Littlejohn and A.M. Krall), but no publication of H.L. Krall on these polynomials is known.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000>Definition</font></u></b>
+<font color=#000000> of the </font>
+<i><font color=#000000>Krall polynomials</font></i>
+<font color=#000000>:<br>
+(n - degree of the polynomial, A,B - positive parameters, x - independent variable)</font>
+</p>
+<p align=left>
+<font color=#000000>This definition gives the general Krall polynomial K(n,A,B, . ) of degree n corresponding to the parameters A,B&gt;0. For concrete evaluations, for example when plotting the polynomials, we choose special values for A,B, e.g. A=1, B=10.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>K := ((n,A,B,x) -&gt; sum('(-1)^floor(j/2)*(2*n-j)!/(2^(n+1)*(n-floor((j+1)/2))!*floor(j/2)!*(n-j)!*(n*(n+1)+A+B))* ((1+(-1)^j)/2 * (n^2*(n^2+2*A+2*B-1)+4*A*B+2*j*(n*(n+1)+A+B)) + (1-(-1)^j)/2 * 4*(B-A)) *x^(n-j)','j'=0..n));</font></b>
+</p>
+<p align=left>
+<img src="images/LT6EXP1.gif" width=144 height=20 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP2.gif" width=927 height=120 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>In order to give an idea of the construction of these polynomials, we shall list the first four Krall polynomials explicitly.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>array(1..4,1..1,[[K(0,A,B,x)],[sort(simplify(K(1,A,B,x)))],<br>
+                 [sort(simplify(K(2,A,B,x)))],[sort(simplify(K(3,A,B,x)))]]);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP3.gif" width=751 height=228 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>We now plot the graphs of the first nine Krall polynomials. Observe that these polynomials are not symmetric, if A is not equal to B.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>with(plots);</font></b>
+</p>
+<p align=left>
+<img src="images/LT6EXP4.gif" width=950 height=20 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP5.gif" width=985 height=20 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP6.gif" width=936 height=20 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP7.gif" width=945 height=20 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP8.gif" width=208 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>kp0:= plot(K(0,1,10,x), x=-1..1): <br>
+kp1:= plot(K(1,1,10,x), x=-1..1): <br>
+kp2:= plot(K(2,1,10,x), x=-1..1): <br>
+kp3:= plot(K(3,1,10,x), x=-1..1):<br>
+kp4:= plot(K(4,1,10,x), x=-1..1): <br>
+kp5:= plot(K(5,1,10,x), x=-1..1):<br>
+kp6:= plot(K(6,1,10,x), x=-1..1): <br>
+kp7:= plot(K(7,1,10,x), x=-1..1):<br>
+kp8:= plot(K(8,1,10,x), x=-1..1): <br>
+display(array(1..3,1..3, <br>
+  [[kp0,kp1,kp2],[kp3,kp4,kp5],[kp6,kp7,kp8]]));</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP9.gif" width=648 height=568 alt="[Maple Plot]">
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="Legendre type polynomials">
+<font color=#000000>In the case A=B the Krall polynomials K(n,A,A, . ) coincide with the </font>
+<i><font color=#000000>Legendre type polynomials</font></i>
+<font color=#000000> P(n,A, . ) corresponding to the fourth-order Legendre type differential equation (cf. </font>
+<a href="#[V1]">[V1]</a><font color=#000000> and section 5 of </font>
+<a href="#[V2]">[V2]</a><font color=#000000> for details). These polynomials are symmetric: they are even or odd depending on the degree of the polynomial. </font>
+</p>
+<p align=left>
+<font color=#000000>We list the first nine Legendre type polynomials.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>array(1..9,1..1,[[K(0,A,A,x)],[sort(simplify(K(1,A,A,x)))],<br>
+[sort(simplify(K(2,A,A,x)))],[sort(simplify(K(3,A,A,x)))],<br>
+[sort(simplify(K(4,A,A,x)))],[sort(simplify(K(5,A,A,x)))],<br>
+[sort(simplify(K(6,A,A,x)))],[sort(simplify(K(7,A,A,x)))],<br>
+[sort(simplify(K(8,A,A,x)))]]);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP10.gif" width=731 height=435 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>We plot the first nine graphs in the case A=B=1.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>lp0:= plot(K(0,1,1,x), x=-1..1): <br>
+lp1:= plot(K(1,1,1,x), x=-1..1): <br>
+lp2:= plot(K(2,1,1,x), x=-1..1): <br>
+lp3:= plot(K(3,1,1,x), x=-1..1):<br>
+lp4:= plot(K(4,1,1,x), x=-1..1): <br>
+lp5:= plot(K(5,1,1,x), x=-1..1):<br>
+lp6:= plot(K(6,1,1,x), x=-1..1): <br>
+lp7:= plot(K(7,1,1,x), x=-1..1):<br>
+lp8:= plot(K(8,1,1,x), x=-1..1): <br>
+display(array(1..3,1..3, <br>
+  [[lp0,lp1,lp2],[lp3,lp4,lp5],[lp6,lp7,lp8]]));</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP11.gif" width=620 height=564 alt="[Maple Plot]">
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="4.">
+<b><u><font color=#000000 size=5>4. The Weighted Sobolev Space</font></u></b>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>The w</font>
+<i><font color=#000000>eighted Sobolev space</font></i>
+<font color=#000000> W(-1,1) consists of all functions u: (-1,1) -&gt; </font>
+<b><font color=#000000>C</font></b>
+<font color=#000000>, such that u, u', u'' are locally absolutely continuous on the interval (-1,1) and such that the functions u, u', sqrt(1-x^2) u'', (1-x^2)^(3/2) u''' are square-integrable on (-1,1) with respect to Lebesgue's measure. We shall point out, that this vector space contains the ordinary Sobolev space W^2_3(-1,1) of the order 3, in which all the functions u, u', u'', u''' exist and are square-integrable on (-1,1). However, since the weights sqrt(1-x^2) and (1-x^2)^(3/2) vanish at the end points 1 and -1, the space W^2_3(-1,1) is a </font>
+<i><font color=#000000>proper</font></i>
+<font color=#000000> subspace of our weighted Sobolev space W(-1,1). For example, the </font>
+<a href="#function g">function g</a><font color=#000000> below is in W(-1,1) and has a third derivative g''' which is not square-integrable on (-1,1), and the </font>
+<a href="#function h">function h</a><font color=#000000> below is in W(-1,1) with a non square-integrable second derivative h''.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>In the space W(-1,1) the following scalar product wip(. , .) is given, which is defined by means of a so called </font>
+<i><font color=#000000>Dirichlet integral</font></i>
+<font color=#000000> plus some boundary values.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000>Definition</font></u></b>
+<font color=#000000> of the scalar product wip( . , . ) in W(-1,1):<br>
+(u,v - functions in W(-1,1), A,B - positive parameters)</font>
+</p>
+<p align=left>
+<font color=#000000>We shall mention that the weight functions corresponding to the second and the third derivatives in the integral below vanish at the boundary of (-1,1). This corresponds with the fact that the </font>
+<a href="#differential operator">sixth-order Legendre type differential equation</a><font color=#000000> is </font>
+<i><font color=#000000>singular, </font></i>
+<font color=#000000>since the weights in our scalar product are given by the coefficients of the differential operator.</font>
+</p>
+<p align=left>
+<font color=#000000>Observe again that this scalar product wip( . , . , A,B) depends on the choice of the positive parameters A,B.</font>
+</p>
+<p align=left>
+<font color=#000000>The following definition gives the </font>
+<i><font color=#000000>real</font></i>
+<font color=#000000> version of the scalar product. Since we are going to study only real-valued functions, it suffices to introduce this simpler version, in general we have to replace 'diff(v,x$k)' by 'conjugate(diff(v,x$k))' for k=0..3.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>wip := (u,v,A,B) -&gt; int( u * v<br>
++ (6*(A+B+2*A*B)*(1-x^2)+12*B*(1-x)+12*A*(1+x)+24)<br>
+   * diff(u,x) * diff(v,x) <br>
++ (1-x^2)*(12+(3*A+3*B+6)*(1-x^2)) <br>
+   * diff(u,x$2) * diff(v,x$2)<br>
++ (1-x^2)^3 * diff(u,x$3) * diff(v,x$3), x=-1..1)<br>
++ 1/A * subs( x=-1, u) * subs( x=-1, v) <br>
++ 1/B * subs( x=1, u) * subs( x=1, v);</font></b>
+</p>
+<p align=left>
+<img src="images/LT6EXP12.gif" width=727 height=107 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP13.gif" width=846 height=63 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP14.gif" width=221 height=45 alt="[Maple Math]">
+</p>
+<p align=left><a name="Sobolev inequality">
+<font color=#000000>In </font>
+<a href="#[V2]">[V2]</a><font color=#000000>, Theorem 2.1 we have obtained the following result, in which we use the notation ||f||_J := sup { |f(x)| , x in J }for continuous functions f: (-1,1) -&gt; </font>
+<b><font color=#000000>C</font></b>
+<font color=#000000> and compact intervals J in (-1,1).</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000>Theorem.</font></u></b>
+<font color=#000000> </font>
+<i><font color=#000000>The space (W(-1,1), wip( . , . )) is a Hilbert space and for every compact interval J in (-1,1) there exists a constant C(J) &gt; 0 such that</font></i>
+</p>
+<p align=center>
+<i><font color=#000000>||u||_J + ||u'||_J + ||u''||_J &lt;= C(J) wip(u,u)^(1/2)</font></i>
+</p>
+<p align=left>
+<i><font color=#000000>holds for all u in W(-1,1).</font></i>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>This </font>
+<i><font color=#000000>weighted Sobolev inequality </font></i>
+<font color=#000000>extends the well known Sobolev inequality from the space W^2_3(-1,1). It is the essential tool to deduce </font>
+<a href="#expansion thm. 1">locally uniform expansions</a><font color=#000000> for the functions in W(-1,1) and their first two derivatives from weighted Sobolev norm expansions.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000>Examples:</font></u></b>
+<font color=#000000> We give some examples</font>
+<b><font color=#000000> </font></b>
+<font color=#000000>for evaluations of the scalar product.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>wip(x,(1-x)^2*ln(1-x),A,B);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP15.gif" width=572 height=45 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>Especially we can establish that the Krall polynomials are </font>
+<i><font color=#000000>pairwise orthogonal</font></i>
+<font color=#000000> with respect to the scalar product wip( . , . ).<br>
+This result is an easy consequence of the considerations in </font>
+<a href="#[V2]">[V2]</a><font color=#000000>, since it is proved that the Krall polynomials are the eigenfunctions of an </font>
+<a href="#differential operator">unbounded self-adjoint operator</a><font color=#000000> in the Hilbert space W(-1,1).</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>wip(K(0,A,B,x),K(0,A,B,x),A,B);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP16.gif" width=275 height=63 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>simplify(%);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP17.gif" width=161 height=54 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>simplify(wip(K(1,A,B,x),K(2,A,B,x),A,B));</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP18.gif" width=24 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>wip(K(3,1,10,x),K(7,1,10,x),1,10);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP19.gif" width=24 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>We shall now consider some typical examples of functions in the weighted Sobolev space W(-1,1). </font>
+<font color=#000000><br>
+<br>
+</font>
+<b><u><font color=#000000>Examples:</font></u></b>
+</p>
+<p align=left>
+<b><u><font color=#000000>(a)</font></u></b>
+<font color=#000000>   Clearly, in addition to every polynomial also every u in C^3[-1,1] is a function in the space W(-1,1).</font>
+<b><font color=#000000> </font></b>
+<font color=#000000>More generally, </font>
+<a href="#4.">W^2_3(-1,1)</a><font color=#000000> is a subspace of W(-1,1).</font>
+</p>
+<p align=left><a name="function g">
+<b><u><font color=#000000>(b)</font></u></b>
+<font color=#000000>   In general, every function u in W(-1,1) can continuously be extended onto the closed interval [-1,1] (see Lemma 3.1 of </font>
+<a href="#[V2]">[V2]</a><font color=#000000>). However, the higher-order derivatives of u need not be bounded on the interval (-1,1). To illustrate this effect we introduce the following function g, which is in W(-1,1) and has an unbounded second derivative near x=1.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>g := x -&gt; (1-x)^2*ln(1-x);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP20.gif" width=193 height=29 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(g(x), x);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP21.gif" width=195 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(g(x), x$2);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP22.gif" width=110 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>We shall plot the graphs of g and its first three derivatives.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>gp0:= plot( g(x), x=-1..1 ):<br>
+gp1:= plot( diff(g(x),x), x=-1..1 ):<br>
+gp2:= plot( diff(g(x),x$2), x=-1..1):      <br>
+gp3:= plot( diff(g(x),x$3), x=-1..1):<br>
+display(array(1..2,1..2, [[gp0,gp1],[gp2,gp3]]));</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP23.gif" width=660 height=492 alt="[Maple Plot]">
+</p>
+<p align=left><a name="function h">
+<b><u><font color=#000000>(c)</font></u></b>
+<font color=#000000>   A second example will display the fact, that even the first derivative of a function in W(-1,1) may be unbounded.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>h:= x-&gt; int(ln(1-ln(1-t)),t=-1..x);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP24.gif" width=218 height=64 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(h(x),x);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP25.gif" width=122 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(h(x),x$2);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP26.gif" width=167 height=45 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>simplify(diff(h(x),x$3));</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP27.gif" width=216 height=54 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>hp0:= plot( h(x), x=-1..1 ):<br>
+hp1:= plot( diff(h(x),x), x=-1..1 ):<br>
+hp2:= plot( diff(h(x),x$2), x=-1..1):      <br>
+hp3:= plot( diff(h(x),x$3), x=-1..1 ):<br>
+display(array(1..2,1..2, [[hp0,hp1],[hp2,hp3]]));</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP28.gif" width=548 height=488 alt="[Maple Plot]">
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="5.">
+<b><u><font color=#000000 size=5>5. The Expansion Theorem</font></u></b>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>The Krall polynomials are </font>
+<i><font color=#000000>the eigenfunctions</font></i>
+<font color=#000000> of the following </font>
+<i><font color=#000000>boundary eigenvalue problem</font></i>
+<font color=#000000> in the </font>
+<a href="#4.">weighted Sobolev space</a><font color=#000000> W(-1,1) :</font>
+</p>
+<p align=left>
+</p>
+<p align=center>
+<font color=#000000>-((1-x^2)^3 u''')''' + ((1-x^2)(12+(3A+3B+6)(1-x^2)) u'')'' - (\Pi(x)u')' + u = \lambda u,</font>
+</p>
+<p align=center>
+<font color=#000000>24 B u''(1) + 24 (A+1) B u'(1) + u(1) = \lambda u(1),</font>
+</p>
+<p align=center>
+<font color=#000000>24 A u''(-1) - 24 A (B+1) u'(-1) + u(-1) = \lambda u(-1),</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>in which \Pi(x) = 6 (A+B+2AB) (1-x^2) + 12 B (1-x) + 12 A (1+x) + 24, \lambda denotes the eigenvalue parameter, and u: (-1,1) -&gt; </font>
+<b><font color=#000000>C</font></b>
+<font color=#000000> is a function in W(-1,1), such that the derivatives u^(i) are locally absolutely continuous in the interval (-1,1) for every i = 0,...,5  (for details cf. </font>
+<a href="#[V2]">[V2]</a><font color=#000000>, Theorems 4.2 and 6.1).</font>
+</p>
+<p align=left>
+<font color=#000000>The </font>
+<i><font color=#000000>eigenvalue</font></i>
+<font color=#000000> \lambda(n,A,B) corresponding to the nth Krall polynomial K(n,A,B, . ) is given by</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>                 \lambda(n,A,B) = n(n-1)(n-2)(n-3)(n-4)(n-5)<br>
+                                              + 18 n(n-1)(n-2)(n-3)(n-4) + 3 (A+B+32) n(n-1)(n-2)(n-3)<br>
+                                              + 24 (A+B+7) n(n-1)(n-2) + 3 (4AB+14A+14B+24) n(n-1)<br>
+                                              + 12 (2AB+A+B) n + 1.</font>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="differential operator">
+<font color=#000000>The above differential operator l(u) := -((1-x^2)^3 u''')''' + ((1-x^2)(12+(3A+3B+6)(1-x^2)) u'')'' - (\Pi(x)u')' + u is called the </font>
+<i><font color=#000000>sixth-order Legendre type differential operator</font></i>
+<font color=#000000>, it has been introduced by Littlejohn in </font>
+<a href="#[L1]">[L1]</a><font color=#000000>. In </font>
+<a href="#[V2]">[V2]</a><font color=#000000> we have shown, that the operator S: D(S) -&gt; W(-1,1), Su := l(u), in which the domain of definition D(S) is a restriction of the maximal domain in W(-1,1) by means of the above boundary conditions, is an unbounded self-adjoint operator such that our boundary eigenvalue problem can equivalently be written in the form </font>
+</p>
+<p align=left>
+</p>
+<p align=center>
+<font color=#000000>Su = \lambda u </font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>for u in D(S). This operator S has a purely discrete spectrum consisting of the simple eigenvalues \lambda(n,A,B) for n in </font>
+<b><font color=#000000>N</font></b>
+<font color=#000000>. So, the Krall polynomials form a complete orthogonal system of eigenfunctions in the Hilbert space W(-1,1) and every function u in W(-1,1) has a Fourier series expansion in terms of the normalized Krall polynomials (see </font>
+<a href="#[V2]">[V2]</a><font color=#000000>, Theorems 6.1 and 6.2).</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>In general, norm expansions do not imply </font>
+<a href="#expansion thm. 1">pointwise expansions</a><font color=#000000>. However, in Theorem 2.1 of </font>
+<a href="#[V2]">[V2]</a><font color=#000000> we have proved a </font>
+<a href="#Sobolev inequality">weighted Sobolev inequality</a><font color=#000000> for the functions in W(-1,1). An application of this inequality yields that the Fourier series and its first two derivatives converge locally uniformly on (-1,1) to the corresponding derivatives of the function u. The convergence of the Fourier series itself actually is uniform on the entire interval (see Theorem 6.4 of </font>
+<a href="#[V2]">[V2]</a><font color=#000000>).</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>In the sequel we introduce the Fourier series corresponding to the Krall polynomials in W(-1,1) and display its approximation property. Although the denseness of the linear span of the Krall polynomials in the weighted Sobolev space W(-1,1) can be proved independently of the spectral theory (cf. Lemma 5.3 and the references given in section 1 of </font>
+<a href="#[V2]">[V2]</a><font color=#000000>), we shall point out, that the Fourier series provides a </font>
+<i><font color=#000000>constructive approximation </font></i>
+<font color=#000000>of the functions in W(-1,1). </font>
+</p>
+<p align=left>
+<font color=#000000>It is this constructiveness which enables our visualizations.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000>Definition</font></u></b>
+<font color=#000000> of the N-th partial sum of the Fourier series correponding to the Krall polynomials in (W(-1,1), wip( . , . ):<br>
+(f - function in W(-1,1), N - degree of the partial sum, A,B - positive parameters, x - independent variable)</font>
+</p>
+<p align=left>
+<font color=#000000>As it was the case with the Krall polynomials and the scalar product in W(-1,1) this series depends on the choice of the parameters A,B &gt; 0. For special applications below we will choose concrete values, e.g. A=1, B=10.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>krallseries := (f,N,A,B,x) -&gt;<br>
+ sum( '1/(wip(K(n,A,B,x),K(n,A,B,x),A,B))' * 'wip(f,K(n,A,B,x),A,B)' * 'K(n,A,B,x)',<br>
+      n=0..N);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP29.gif" width=785 height=68 alt="[Maple Math]">
+</p>
+<p align=center>
+<img src="images/LT6EXP30.gif" width=193 height=29 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>We calculate the first partial sums of the Fourier series of the function </font>
+<a href="#function g">g, g(x) = (1-x)^2 ln(1-x)</a><font color=#000000>, which has been defined in section 4:</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>seq(sort(simplify(krallseries(g(x),i,1,10,x))), i=0..3);</font></b>
+</p>
+<p align=left>
+<img src="images/LT6EXP31.gif" width=748 height=45 alt="[Maple Math]">
+<br>
+<img src="images/LT6EXP32.gif" width=454 height=45 alt="[Maple Math]">
+</p>
+<p align=left><a name="Visualization 1">
+<font color=#000000>At first, we visualize the </font>
+<a href="#function g">function g</a><font color=#000000> and the first four partial sums of the approximating Fourier series corresponding to the Krall polynomials.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>plot( [g(x), seq(krallseries(g(x),i,1,10,x),i=0..3)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow], <br>
+      title=`g(x) = (1-x)^2 ln(1-x) and the first partial sums of the Fourier series of g` );</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP33.gif" width=568 height=488 alt="[Maple Plot]">
+</p>
+<p align=left>
+<font color=#000000>Next we display the </font>
+<a href="#function g">derivative g'</a><font color=#000000> and the derivatives of the first five partial sums of the approximating Fourier series with respect to the Krall polynomials.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(g(x),x);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP34.gif" width=195 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>plot( [diff(g(x),x), seq(diff(krallseries(g(x),i,1,10,x),x),i=0..4)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink],<br>
+      title=`g' and the derivatives of the first partial sums of the Fourier series of g` );</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP35.gif" width=572 height=508 alt="[Maple Plot]">
+</p>
+<p align=left>
+<font color=#000000>We now visualize the </font>
+<a href="#function g">second derivative g''</a><font color=#000000> and the second derivatives of the first six partial sums of the approximating Fourier series corresponding to the Krall polynomials. We shall point out, that g'' is unbounded near the boundary x=1.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(g(x),x$2);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP36.gif" width=110 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>plot( [diff(g(x),x$2), seq(diff(krallseries(g(x),i,1,10,x),x$2),i=0..5)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink,navy],<br>
+      title=`g'' and the second derivatives of the first partial sums of the Fourier series of g` );</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP37.gif" width=600 height=524 alt="[Maple Plot]">
+</p>
+<p align=left>
+<font color=#000000>Finally, we plot the </font>
+<a href="#function g">third derivative of g</a><font color=#000000> and the third derivatives of the first seven partial sums of the Fourier series corresponding to the Krall polynomials. </font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(g(x),x$3);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP38.gif" width=74 height=45 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>plot( [diff(g(x),x$3), seq(diff(krallseries(g(x),i,1,10,x),x$3),i=0..6)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink,navy,turquoise],<br>
+      title=`g''' and the third derivatives of the first partial sums of the Fourier series of g` );</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP39.gif" width=600 height=520 alt="[Maple Plot]">
+</p>
+<p align=left>
+<b><u><font color=#000000>Summary</font></u></b>
+<font color=#000000> of the preceding four plots:</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>ep0:= plot( [g(x), seq(krallseries(g(x),i,1,10,x),i=0..3)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow], title=`g, g(x) = (1-x)^2 ln(1-x) ` ):<br>
+ep1:= plot( [diff(g(x),x), seq(diff(krallseries(g(x),i,1,10,x),x),i=0..4)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink], title=`g'` ):<br>
+ep2:= plot( [diff(g(x),x$2), seq(diff(krallseries(g(x),i,1,10,x),x$2),i=0..5)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink,navy], title=`g''` ):<br>
+ep3:= plot( [diff(g(x),x$3), seq(diff(krallseries(g(x),i,1,10,x),x$3),i=0..6)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink,navy,turquoise], title=`g'''` ):<br>
+display(array(1..2,1..2, [[ep0,ep1],[ep2,ep3]]));</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP40.gif" width=692 height=576 alt="[Maple Plot]">
+</p>
+<p align=left>
+<font color=#000000>The first three plots in this summary visualize the result on the locally uniform expansion of the functions in W(-1,1) in terms of their Fourier series, which is proved in Theorem 6.4 of </font>
+<a href="#[V2]">[V2]</a><font color=#000000>:</font>
+<b><font color=#000000> </font></b>
+<font color=#000000><br>
+</font>
+</p>
+<p align=left><a name="expansion thm. 1">
+<b><u><font color=#000000>Theorem.</font></u></b>
+<font color=#000000> </font>
+<i><font color=#000000>  Every function u in W(-1,1) and the first two derivatives u', u'' are locally uniformly approximated on the interval (-1,1) by the corresponding derivatives of the partial sums of the Fourier series corresponding to the Krall polynomials.</font></i>
+<font color=#000000><br>
+</font>
+</p>
+<p align=left>
+<font color=#000000>As the remark to Theorem 6.4 shows, the approximation of u indeed holds uniformly on the entire interval (-1,1). The functions u in W(-1,1) admit their boundary values in 1 and -1 (see Lemma 3.1 of </font>
+<a href="#[V2]">[V2]</a><font color=#000000>) and in this sense the expansion in terms of the Krall polynomials also holds in x=1 and x=-1. On the other hand the first and the second derivative of the functions in W(-1,1) may be unbounded  near the boundary of (-1,1) and therefore in general these functions can not be approximated uniformly on (-1,1) by polynomials. For instance, our </font>
+<a href="#function g">function g</a><font color=#000000> above, g(x) = (1-x)^2 ln(1-x), has an unbounded second-order derivative, while the </font>
+<a href="#function h">function h</a><font color=#000000> from section 4 even has an unbounded first-order derivative.<br>
+</font>
+</p>
+<p align=left>
+<font color=#000000>The fourth plot above displays g''' and the third derivatives of the partial sums of the Fourier series. In this case the approximation seems to be worse and indeed, the theory in </font>
+<a href="#[V2]">[V2]</a><font color=#000000> does not give such a result for abitrary functions in the weighted Sobolev space W(-1,1). If, additionally the function u is in the domain of definition D(S) of the corresponding </font>
+<a href="#differential operator">self-adjoint operator S</a><font color=#000000>, then our Theorem 6.5 in </font>
+<a href="#[V2]">[V2]</a><font color=#000000> gives the following result on the locally uniform simultaneous approximation of the first eight derivatives:</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000>Theorem.</font></u></b>
+<font color=#000000>  </font>
+<font color=#000000> </font>
+<i><font color=#000000>Every function u in D(S) and its first eight derivatives can locally uniformly be expanded in terms of the corresponding derivatives of the Fourier series corresponding to the Krall polynomials.<br>
+</font></i>
+</p>
+<p align=left>
+<font color=#000000>Observe that the </font>
+<a href="#function g">function g</a><font color=#000000> given by  g(x) = (1-x)^2 ln(1-x) does not belong to the domain D(S).</font>
+</p>
+<p align=left>
+<font color=#000000> </font>
+</p>
+<p align=left><a name="function g2">
+<font color=#000000>In a second visualization of the approximation property of the Krall polynomials we study the following function g2.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>g2 := x -&gt; (1-x^2)^2*ln(1-x^2);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP41.gif" width=219 height=42 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>The oscillation of the </font>
+<a href="#function g2">graph of g2</a><font color=#000000> makes it necessary to consider partial sums up to the order 6 to obtain a suitable approximation.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>plot( [g2(x), seq(krallseries(g2(x),i,1,10,x),i=0..7)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink,navy,turquoise,red], <br>
+      title=`g2(x) = (1-x^2)^2 ln(1-x^2) and the first partial sums of the Fourier series of g2` );</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP42.gif" width=776 height=608 alt="[Maple Plot]">
+</p>
+<p align=left>
+<font color=#000000>The plot shows that the 4th partial sum (pink) nearly coincides with the 5th partial sum (navy), and that the 6th partial sum (turquoise) almost agrees with the 7th partial sum (red). This correponds with the fact, that the (normalized) odd order Fourier coefficients of g2 are small in relation to the even order Fourier coefficients:</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>seq( evalf(wip(g2(x),K(i,1,10,x),1,10)/wip(K(i,1,10,x),K(i,1,10,x),1,10),2), i=0..12);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP43.gif" width=668 height=29 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>The cause of this effect clearly is the symmetry of the </font>
+<a href="#function g2">function g2</a><font color=#000000>. Since g2 is an even function, since the </font>
+<a href="#3.">Krall polynomials</a><font color=#000000> to the parameters A=1 and B=10 are </font>
+<i><font color=#000000>almost even or odd</font></i>
+<font color=#000000>, respectively, in dependence of their degree, and since the </font>
+<a href="#4.">weighted Sobolev scalar product</a><font color=#000000> as well is </font>
+<i><font color=#000000>nearly symmetric</font></i>
+<font color=#000000>, we can expect such a behaviour. In the case A=B of the </font>
+<a href="#Legendre type polynomials">Legendre type polynomials</a><font color=#000000> we obtain full symmetry and therefore we exactly have wip(g2(x),K(i,1,1,x),1,1) = 0 for all odd i:</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>seq( evalf(wip(g2(x),K(i,1,1,x),1,1)/wip(K(i,1,1,x),K(i,1,1,x),1,1),2), i=0..12);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP44.gif" width=442 height=20 alt="[Maple Math]">
+</p>
+<p align=left>
+<font color=#000000>We now turn back to the general Fourier series corresponding to the polynomials K(n,1,10, . ). Again, we obtain approximations of the </font>
+<a href="#function g2">derivative g2'</a><font color=#000000> as well by means of the derivatives of the Fourier series.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(g2(x),x);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP45.gif" width=272 height=29 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>plot( [diff(g2(x),x), seq(diff(krallseries(g2(x),i,1,10,x),x),i=0..6)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink,navy,turquoise],<br>
+      title=`g2' and the derivatives of the first partial sums of the Fourier series of g2` );</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP46.gif" width=771 height=638 alt="[Maple Plot]">
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>Finally, we visualize the approximation of the </font>
+<a href="#function g2">second derivative g2''</a><font color=#000000>.</font>
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>diff(g2(x),x$2);</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP47.gif" width=349 height=29 alt="[Maple Math]">
+</p>
+<p align=left>
+<tt>&gt; </tt>
+<b><font color=#FF0000>plot( [diff(g2(x),x$2), seq(diff(krallseries(g2(x),i,1,10,x),x$2),i=0..8)], x=-1..1,<br>
+      color=[black,blue,green,red,yellow,pink,navy,turquoise,red,green],<br>
+      title=`g2'' and the second derivatives of the first partial sums of the Fourier series of g2` );</font></b>
+</p>
+<p align=center>
+<img src="images/LT6EXP48.gif" width=775 height=673 alt="[Maple Plot]">
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>Observe that the second derivative g2'' is unbounded at both end points of the interval (-1,1). But nevertheless, the second derivative of the eighth partial sum of the Fourier series corresponding to the Krall polynomials supplies a suitable locally uniform approximation of this function.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="6.">
+<b><u><font color=#000000 size=5>6. Conclusion</font></u></b>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>Simply speaking, mathematics is a matter of </font>
+<i><font color=#000000>ideas.</font></i>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>The </font>
+<i><font color=#000000>idea of orthogonal polynomials </font></i>
+<font color=#000000>is quite old. It was in the year 1782 when A.M. Legendre has discovered the now called Legendre polynomials in a work on the attraction exerted by solids of revolution (</font>
+<a href="#[Le1]">[Le1]</a><font color=#000000>). A few years later he established the orthogonality of these polynomials and used the fact that they satisfy an ordinary differential equation of second order (cf. </font>
+<a href="#[Le2]">[Le2]</a><font color=#000000> , </font>
+<a href="#[Le3]">[Le3]</a><font color=#000000>). Almost 200 years later, Littlejohn has discovered the </font>
+<a href="#3.">Krall polynomials</a><font color=#000000>, which are closely connected with Legendre's polynomials, and thereby settled another member into the now large family of orthogonal polynomials (</font>
+<a href="#[L1]">[L1]</a><font color=#000000>).</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>In the meantime, the </font>
+<i><font color=#000000>spectral theory of singular differential operators </font></i>
+<font color=#000000>had well been developed. The origins of this </font>
+<i><font color=#000000>idea</font></i>
+<font color=#000000> can be found in the work of H. Weyl from the early 20th century. Already Weyl has studied the second order differential equations with orthogonal polynomial solutions in this respect (see e.g. his example on the Gaussian differential equation in &#167;2 of his paper </font>
+<a href="#[W]">[W]</a><font color=#000000>, which in some sense comprises Legendre's differential equation). Later, Titchmarsh (1940) and Glasmann (about 1950) have studied the classical orthogonal polynomials, including Legendre's polynomials, in the framework of spectral theory of differential operators in more detail (cf. here also the introduction of the survey paper </font>
+<a href="#[EL]">[EL]</a><font color=#000000>). Their monographs </font>
+<i><font color=#000000>Eigenfunction Expansions Associated with Second-Order Differential Equations</font></i>
+<font color=#000000> (</font>
+<a href="#[T]">[T]</a><font color=#000000>) and </font>
+<i><font color=#000000>Theorie der linearen Operatoren im Hilbert-Raum </font></i>
+<font color=#000000>(</font>
+<a href="#[AG]">[AG]</a><font color=#000000>) are still the basic references in this subject.</font>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<font color=#000000>Till now, the interplay of orthogonal polynomials and spectral theory provides a broad field for mathematical activity. We hope, our visualizations given above may help to expound some more of the underlying </font>
+<i><font color=#000000>ideas.</font></i>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+</p>
+<p align=left>
+<b><u><font color=#000000 size=5>7. Historical References</font></u></b>
+</p>
+<p align=left>
+</p>
+<p align=left><a name="[AG]">
+<b><font color=#000000>[AG]   </font></b>
+<font color=#000000>N.I. Achieser and I.M. Glasmann</font>
+<b><font color=#000000>: </font></b>
+<i><font color=#000000>Theorie der linearen Operatoren im Hilbert-Raum</font></i>
+<b><font color=#000000>, </font></b>
+<font color=#000000>8., erw. Aufl., hg. von H. Baumg&#228;rtel, Thun, Frankfurt am Main 1981.</font>
+</p>
+<p align=left><a name="[Le1]">
+<b><font color=#000000>[Le1] </font></b>
+<font color=#000000>  Adrien-Marie Legendre: </font>
+<i><font color=#000000>Recherches sur l'attraction des sph&#233;roides homog&#232;nes</font></i>
+<font color=#000000>, M&#233;moires de math&#233;matique et de physique, pr&#233;sent&#233;s &#224; l'Acad&#233;mie Royale des Sciences par divers savans et lus dans ses assembl&#233;es, Acad&#233;mie des Sciences (Paris), Vol. 10 (1785), pp. 411-434.</font>
+</p>
+<p align=left><a name="[Le2]">
+<b><font color=#000000>[Le2] </font></b>
+<font color=#000000>  Adrien-Marie Legendre: </font>
+<i><font color=#000000>Recherches sur la figure des plan&#232;tes</font></i>
+<font color=#000000>, M&#233;moires de math&#233;matique et de physique, tir&#232;s des reg. de l'Acad&#233;mie des Sciences, 1784 (1787), pp. 370-389.</font>
+</p>
+<p align=left><a name="[Le3]">
+<b><font color=#000000>[Le3] </font></b>
+<font color=#000000>  Adrien-Marie Legendre: </font>
+<i><font color=#000000>Suite des Recherches sur la Figure des Plan&#232;tes</font></i>
+<font color=#000000>, Histoire de l'Acad&#233;mie Royale des Sciences avec les M&#233;moires de Math&#233;matique et de Physique, Paris 1789 (1793), pp. 372-454.</font>
+</p>
+<p align=left><a name="[T]">
+<b><font color=#000000>[T] </font></b>
+<font color=#000000>  E.C. Titchmarsh: </font>
+<i><font color=#000000>Eigenfunction Expansions Associated with Second-Order Differential Equations</font></i>
+<font color=#000000>, </font>
+<i><font color=#000000>Part I, Part II</font></i>
+<font color=#000000>, Vol. I (2nd Ed.), Oxford 1962, Vol. II Oxford 1958.</font>
+</p>
+<p align=left><a name="[W]">
+<b><font color=#000000>[W] </font></b>
+<font color=#000000>  Hermann Weyl: </font>
+<i><font color=#000000>&#220;ber gew&#246;hnliche lineare Differentialgleichungen mit singul&#228;ren Stellen und ihre Eigenfunktionen (2. Note)</font></i>
+<font color=#000000>, Nachrichten der K&#246;niglichen Gesellschaft der Wissenschaften zu G&#246;ttingen. Mathematisch-physikalische Klasse (1910), pp. 442-467.</font>
+</p>
+<p align=left>
+</p>
+</body>
+</html>

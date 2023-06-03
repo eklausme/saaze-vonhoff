@@ -1,0 +1,20 @@
+#!/bin/bash
+# Deploy Dr. Rolf Vonhoff's blog: build directory is in /tmp/build (for speed reasons)
+# Elmar Klausmeier, 01-Jun-2023
+
+export SAAZEROOT=/home/klm/php/saaze-vonhoff
+DOCROOT=/srv/http/vonhoff
+
+errorExit() {
+	echo $1
+	exit 1
+}
+
+[ -d $DOCROOT ] && rm -rf $DOCROOT
+[ -d /tmp/build ] || errorExit "No build directory in /tmp"
+mv /tmp/build $DOCROOT
+
+cd $DOCROOT
+ln -s $SAAZEROOT/public/img
+
+

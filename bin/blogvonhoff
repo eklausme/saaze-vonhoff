@@ -1,0 +1,122 @@
+#!/bin/perl -W
+# Convert Dr. Rolf Vonhoff's FrontPage HTML files to Markdown usable by Simplified Saaze
+# Elmar Klausmeier, 20-May-2023: Initial revision
+# Elmar Klausmeier, 21-May-2023: Testing with rv1r1.htm
+# Elmar Klausmeier, 22-May-2023: Testing with rv2r1.htm
+
+use strict;
+
+my ($flag,$chapNo,$liNr,$last) = (-1,0,0,"");
+
+while (<>) {
+	chomp;
+	s/\r//g;	# get rid of \r
+	if (/<p align="left"><b><font size="4"><a/ && !/<\/font><\/b>/) {
+		$last = $_;
+		next;
+	}
+	if (length($last) > 0) {
+		$_ = $last . " " . $_;
+		$last = "";
+	}
+
+	# Change German Umlaut and foreign accents
+	s/\xE4/ä/g;
+	s/\xFC/ü/g;
+	s/\xF6/ö/g;
+	s/\xDF/ß/g;
+	s/\xE9/é/g;
+	s/\xF2/ó/g;
+	s/\xF3/ó/g;
+	s/\xEE/î/g;
+	s/\xDC/Ü/g;
+
+	if (/<li>/) {
+		$flag = 4;
+		next;
+	}
+	if ($flag == 4) {
+		printf("%d. ",++$liNr);
+		$flag = 0;
+	}
+	next if (/^<html>|^<head>|^<\/head>|^<title>|^<meta |^<base |^<body |^<\/body|^<\/html>/);
+	s|<p align="left">&nbsp;</p>||i;
+	s|<p align="left">&nbsp;||i;
+	s|<font COLOR="#000000">||i;
+	if ($flag <= 0 && /<p><b><font size="4">(.+?)<\/font><\/b><\/p>/) {
+		print "---\ndate: \"2001-03-04 12:00:00\"\ntitle: \"".$1."\"\n---\n";
+		$flag = 1;
+		next;
+	}
+	if (/<p(| align="left")><b><font size="4">(.+?)<\/font><\/b>(|<\/p>)/) {
+		printf("## %d. %s\n\n",++$chapNo,$2);
+		next;
+	} elsif(/<p align="right"><font size="2" color="#000080">/) {
+		s/<p align="right"><font size="2" color="#000080">//;
+		$flag = 5;
+		print "> ";
+	} elsif ($flag == 5) {
+		if (/<\/font>(<p align="right">|<\/p>)/) {
+			s/<\/font>(<p align="right">|<\/p>)//;
+			$flag = 1;
+		}
+		print "> ";
+	}
+	s|<p>&nbsp;</p>||;
+	s|<p align="left">||;
+	s|<p align="right">||;
+	s|<ul>||;
+	if (/<\/ul>/) {
+		s|</ul>||;
+		$liNr = 0;
+	}
+	s|</li>||;
+	#s/(|<\/font>)<\/li>//;
+	s|<br>||;
+	s|&nbsp;| |g;
+	s|</p>|\n|;
+	s|<font COLOR="#(\d+)"><font size="2">|<font COLOR="#$1">|ig;	# do not change size, that's done in CSS
+	s|<font size="2" color="#(\d+)">|<font COLOR="#$1">|ig;
+	s|<font color="#(\d+)" size="2">|<font COLOR="#$1">|ig;
+	s|<font size="3">||;
+
+	#s|<b> </b>Friedr| Friedr|;	# special correction
+	s|<b> </b>| |;	# special correction
+	s|\s+</i>|</i> |g;	# correct spacing around italics
+	s|<i>\s+| <i>|g;
+	#s|<i>|_|g;	# cannot be used as </i> also comes on new line
+	#s|</i>|_|g;
+	s/<b>/__/g;
+	s/ <\/b>/__ /g;
+	s/<\/b>/__/g;
+
+	s/^\s+//g;	# ltrim	to circumvent <pre> for code segments indented by spaces
+	s/\s+$//g;	# rtrim
+
+	# Special hacks, dependant on specific content in rv1r1.htm: Lit Studium
+	s/\/Wiesbaden/\/Wiesbaden 1985./;
+	next if /^1985\./;	# number on line is taken as ordered list in Markdown
+	s/1700 -/1700 - 1900./;
+	s/^1900\. //;
+	s/, D\.C\./, D.C., 1999./;
+	s/^1999\.//;
+	#s/^_Chapman/Chapman/;
+	#s/tics,/tics,_/;
+	s/Singapore$/Singapore 1997./;
+	next if s/^1997\.//;
+	s/mbH, Berlin$/mbH, Berlin 1987./;
+	next if /^1987\./;
+
+	# Special to rv2r1.htm: Schulmathem
+	s|<font COLOR="#000080">1. Man soll sich für seinen|\n1. Man soll sich für seinen|;
+	s/nützlich sein könnten/nützlich sein könnten -/;
+	next if (/^\-$/);
+
+	# Special to rvr2.htm: Veroeffentl
+	s/t Dortmund am/t Dortmund am 19./;
+	s/19\. und 26\. November 1996/und 26. November 1996/;
+	s|math/LT6EXP1.html|../2000-03-11-visualization-of-the-expansion-theorem-for-the-krall-polynomials-in-a-weighted-sobolev-space|;
+
+	print $_ . "\n" if ($flag >= 0);
+}
+

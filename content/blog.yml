@@ -1,0 +1,6 @@
+title: Rolf Vonhoff's Blog
+sort_field: date
+sort_direction: desc
+index_route: /
+entry_route: /blog/{slug}
+rss: true
