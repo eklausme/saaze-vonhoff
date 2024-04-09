@@ -258,9 +258,9 @@ Interactive Fractal Zoomer, <a HREF="http://limax.paru.cas.cz/~hubicka/XaoS/inde
 
 ## 8. <a id="Escher"></a>Die Mathematik des M.C. Escher
 
-<div style="background-image: url('../../img/birds.gif');">
+<div style="background-image: url('*<?=$rbase?>*/img/birds.gif');">
 
-![](../../img/Emeisen.gif)
+![](*<?=$rbase?>*/img/Emeisen.gif)
 
 1. __Bruno Ernst:__ <i>Der Zauberspiegel des Maurits
 Cornelis Escher,</i> TACO Verlagsgesellschaft und Agentur mbH, Berlin 1986.

@@ -88,25 +88,25 @@ For concrete evaluations, for example when plotting the polynomials, we choose s
     +2*j*(n*(n+1)+A+B)) + (1-(-1)^j)/2 * 4*(B-A)) *x^(n-j)',
     'j'=0..n));
 ```
-![](../../img/LT6EXP1.gif)
-![](../../img/LT6EXP2.gif)
+![](*<?=$rbase?>*/img/LT6EXP1.gif)
+![](*<?=$rbase?>*/img/LT6EXP2.gif)
 
 In order to give an idea of the construction of these polynomials, we shall list the first four Krall polynomials explicitly.
 ```Mathematica
 > array(1..4,1..1,[[K(0,A,B,x)],[sort(simplify(K(1,A,B,x)))],
     [sort(simplify(K(2,A,B,x)))],[sort(simplify(K(3,A,B,x)))]]);
 ```
-![](../../img/LT6EXP3.gif)
+![](*<?=$rbase?>*/img/LT6EXP3.gif)
 
 We now plot the graphs of the first nine Krall polynomials. Observe that these polynomials are not symmetric, if $A$ is not equal to $B$.
 ```Mathematica
 > with(plots);
 ```
-![](../../img/LT6EXP4.gif)
-![](../../img/LT6EXP5.gif)
-![](../../img/LT6EXP6.gif)
-![](../../img/LT6EXP7.gif)
-![](../../img/LT6EXP8.gif)
+![](*<?=$rbase?>*/img/LT6EXP4.gif)
+![](*<?=$rbase?>*/img/LT6EXP5.gif)
+![](*<?=$rbase?>*/img/LT6EXP6.gif)
+![](*<?=$rbase?>*/img/LT6EXP7.gif)
+![](*<?=$rbase?>*/img/LT6EXP8.gif)
 
 ```Mathematica
 > kp0:= plot(K(0,1,10,x), x=-1..1):
@@ -121,7 +121,7 @@ kp8:= plot(K(8,1,10,x), x=-1..1):
 display(array(1..3,1..3,
   [[kp0,kp1,kp2],[kp3,kp4,kp5],[kp6,kp7,kp8]]));
 ```
-![](../../img/LT6EXP9.gif)
+![](*<?=$rbase?>*/img/LT6EXP9.gif)
 
 <a name="Legendre type polynomials">In the case $A=B$ the Krall polynomials $K(n,A,A,.)$ coincide with the _Legendre type polynomials_
 $P(n,A,.)$ corresponding to the fourth-order Legendre type differential equation (cf. <a href="#[V1]">[V1]</a> and section 5 of
@@ -135,7 +135,7 @@ We list the first nine Legendre type polynomials.
   [sort(simplify(K(6,A,A,x)))],[sort(simplify(K(7,A,A,x)))],
   [sort(simplify(K(8,A,A,x)))]]);
 ```
-![](../../img/LT6EXP10.gif)
+![](*<?=$rbase?>*/img/LT6EXP10.gif)
 
 We plot the first nine graphs in the case A=B=1.
 ```Mathematica
@@ -151,7 +151,7 @@ We plot the first nine graphs in the case A=B=1.
   display(array(1..3,1..3,
     [[lp0,lp1,lp2],[lp3,lp4,lp5],[lp6,lp7,lp8]]));
 ```
-![](../../img/LT6EXP11.gif)
+![](*<?=$rbase?>*/img/LT6EXP11.gif)
 
 
 ## <a name="4.">4. The Weighted Sobolev Space
@@ -187,9 +187,9 @@ this simpler version, in general we have to replace `diff(v,x$k)` by `conjugate(
 + 1/A * subs( x=-1, u) * subs( x=-1, v)
 + 1/B * subs( x=1, u) * subs( x=1, v);
 ```
-![](../../img/LT6EXP12.gif)
-![](../../img/LT6EXP13.gif)
-![](../../img/LT6EXP14.gif)
+![](*<?=$rbase?>*/img/LT6EXP12.gif)
+![](*<?=$rbase?>*/img/LT6EXP13.gif)
+![](*<?=$rbase?>*/img/LT6EXP14.gif)
 
 <a name="Sobolev inequality">In <a href="#[V2]">[V2]</a>, Theorem 2.1 we have obtained the following result, in which we use the notation
 $\|f\|_J := \sup\\{ \left|f(x)\right|, x \in J \\}$ for continuous functions $f:(-1,1)\to\mathbb{C}$
@@ -209,7 +209,7 @@ __Examples:__ We give some examples for evaluations of the scalar product.
 ```Mathematica
 > wip(x,(1-x)^2*ln(1-x),A,B);
 ```
-![](../../img/LT6EXP15.gif)
+![](*<?=$rbase?>*/img/LT6EXP15.gif)
 
 Especially we can establish that the Krall polynomials are _pairwise orthogonal_ with respect to the scalar product $\hbox{wip}( . , . )$.
 This result is an easy consequence of the considerations in <a href="#[V2]">[V2]</a>, since it is proved that the Krall polynomials are the eigenfunctions of an
@@ -218,19 +218,19 @@ This result is an easy consequence of the considerations in <a href="#[V2]">[V2]
 ```Matheamtica
 > wip(K(0,A,B,x),K(0,A,B,x),A,B);
 ```
-![](../../img/LT6EXP16.gif)
+![](*<?=$rbase?>*/img/LT6EXP16.gif)
 ```Mathematica
 > simplify(%);
 ```
-![](../../img/LT6EXP17.gif)
+![](*<?=$rbase?>*/img/LT6EXP17.gif)
 ```Mathematica
 > simplify(wip(K(1,A,B,x),K(2,A,B,x),A,B));
 ```
-![](../../img/LT6EXP18.gif)
+![](*<?=$rbase?>*/img/LT6EXP18.gif)
 ```Mathematica
 > wip(K(3,1,10,x),K(7,1,10,x),1,10);
 ```
-![](../../img/LT6EXP19.gif)
+![](*<?=$rbase?>*/img/LT6EXP19.gif)
 
 We shall now consider some typical examples of functions in the weighted Sobolev space $W(-1,1)$.
 
@@ -245,15 +245,15 @@ More generally, <a href="#4.">$W^2_3(-1,1)$</a> is a subspace of $W(-1,1)$.
 ```Mathematica
 > g := x -> (1-x)^2*ln(1-x);
 ```
-![](../../img/LT6EXP20.gif)
+![](*<?=$rbase?>*/img/LT6EXP20.gif)
 ```Mathematica
 > diff(g(x), x);
 ```
-![](../../img/LT6EXP21.gif)
+![](*<?=$rbase?>*/img/LT6EXP21.gif)
 ```Mathematica
 > diff(g(x), x$2);
 ```
-![](../../img/LT6EXP22.gif)
+![](*<?=$rbase?>*/img/LT6EXP22.gif)
 
 We shall plot the graphs of g and its first three derivatives.
 ```Mathematica
@@ -263,7 +263,7 @@ We shall plot the graphs of g and its first three derivatives.
   gp3:= plot( diff(g(x),x$3), x=-1..1):
   display(array(1..2,1..2, [[gp0,gp1],[gp2,gp3]]));
 ```
-![](../../img/LT6EXP23.gif)
+![](*<?=$rbase?>*/img/LT6EXP23.gif)
 
 <a name="function h">__(c)__ A second example will display the fact,
 that even the first derivative of a function in $W(-1,1)$ may be unbounded.
@@ -271,19 +271,19 @@ that even the first derivative of a function in $W(-1,1)$ may be unbounded.
 ```Mathematica
 > h:= x-> int(ln(1-ln(1-t)),t=-1..x);
 ```
-![](../../img/LT6EXP24.gif)
+![](*<?=$rbase?>*/img/LT6EXP24.gif)
 ```Mathematica
 > diff(h(x),x);
 ```
-![](../../img/LT6EXP25.gif)
+![](*<?=$rbase?>*/img/LT6EXP25.gif)
 ```Mathematica
 > diff(h(x),x$2);
 ```
-![](../../img/LT6EXP26.gif)
+![](*<?=$rbase?>*/img/LT6EXP26.gif)
 ```Mathematica
 > simplify(diff(h(x),x$3));
 ```
-![](../../img/LT6EXP27.gif)
+![](*<?=$rbase?>*/img/LT6EXP27.gif)
 ```Mathematica
 > hp0:= plot( h(x), x=-1..1 ):
   hp1:= plot( diff(h(x),x), x=-1..1 ):
@@ -291,7 +291,7 @@ that even the first derivative of a function in $W(-1,1)$ may be unbounded.
   hp3:= plot( diff(h(x),x$3), x=-1..1 ):
   display(array(1..2,1..2, [[hp0,hp1],[hp2,hp3]]));
 ```
-![](../../img/LT6EXP28.gif)
+![](*<?=$rbase?>*/img/LT6EXP28.gif)
 
 ## <a name="5.">5. The Expansion Theorem
 
@@ -367,8 +367,8 @@ For special applications below we will choose concrete values, e.g., $A=1, B=10$
   sum( '1/(wip(K(n,A,B,x),K(n,A,B,x),A,B))'
        * 'wip(f,K(n,A,B,x),A,B)' * 'K(n,A,B,x)', n=0..N);
 ```
-![](../../img/LT6EXP29.gif)
-![](../../img/LT6EXP30.gif)
+![](*<?=$rbase?>*/img/LT6EXP29.gif)
+![](*<?=$rbase?>*/img/LT6EXP30.gif)
 
 We calculate the first partial sums of the Fourier series of the
 <a href="#function g">function $g$</a>, where $g(x) = (1-x)^2 \ln(1-x)$, which has been defined in section 4:
@@ -376,8 +376,8 @@ We calculate the first partial sums of the Fourier series of the
 ```Mathematica
 > seq(sort(simplify(krallseries(g(x),i,1,10,x))), i=0..3);
 ```
-![](../../img/LT6EXP31.gif)
-![](../../img/LT6EXP32.gif)
+![](*<?=$rbase?>*/img/LT6EXP31.gif)
+![](*<?=$rbase?>*/img/LT6EXP32.gif)
 
 <a name="Visualization 1">At first, we visualize the
 <a href="#function g">function g</a> and the first four partial sums of the
@@ -388,14 +388,14 @@ approximating Fourier series corresponding to the Krall polynomials.
       color=[black,blue,green,red,yellow],
       title=`g(x) = (1-x)^2 ln(1-x) and the first partial sums of the Fourier series of g` );
 ```
-![](../../img/LT6EXP33.gif)
+![](*<?=$rbase?>*/img/LT6EXP33.gif)
 
 Next we display the <a href="#function g">derivative g'</a> and the derivatives
 of the first five partial sums of the approximating Fourier series with respect to the Krall polynomials.
 ```Mathematica
 > diff(g(x),x);
 ```
-![](../../img/LT6EXP34.gif)
+![](*<?=$rbase?>*/img/LT6EXP34.gif)
 ```Mathematica
 > plot(
   [diff(g(x),x), seq(diff(krallseries(g(x),i,1,10,x),x),i=0..4)],
@@ -403,7 +403,7 @@ of the first five partial sums of the approximating Fourier series with respect 
       color=[black,blue,green,red,yellow,pink],
    title=`g' and the derivatives of the first partial sums of the Fourier series of g` );
 ```
-![](../../img/LT6EXP35.gif)
+![](*<?=$rbase?>*/img/LT6EXP35.gif)
 
 We now visualize the
 <a href="#function g">second derivative g''</a> and the second derivatives of the first six partial sums of the approximating Fourier series corresponding to the Krall polynomials. We shall point out, that g'' is unbounded near the boundary x=1.
@@ -411,7 +411,7 @@ We now visualize the
 ```Mathematica
 > diff(g(x),x$2);
 ```
-![](../../img/LT6EXP36.gif)
+![](*<?=$rbase?>*/img/LT6EXP36.gif)
 ```Mathematica
 > plot(
   [diff(g(x),x$2), seq(diff(krallseries(g(x),i,1,10,x),x$2),i=0..5)],
@@ -419,20 +419,20 @@ We now visualize the
       color=[black,blue,green,red,yellow,pink,navy],
    title=`g'' and the second derivatives of the first partial sums of the Fourier series of g` );
 ```
-![](../../img/LT6EXP37.gif)
+![](*<?=$rbase?>*/img/LT6EXP37.gif)
 
 Finally, we plot the <a href="#function g">third derivative of g</a> and the third derivatives
 of the first seven partial sums of the Fourier series corresponding to the Krall polynomials.
 ```Mathematica
 diff(g(x),x$3);
 ```
-![](../../img/LT6EXP38.gif)
+![](*<?=$rbase?>*/img/LT6EXP38.gif)
 ```Mathematica
 plot( [diff(g(x),x$3), seq(diff(krallseries(g(x),i,1,10,x),x$3),i=0..6)], x=-1..1,
       color=[black,blue,green,red,yellow,pink,navy,turquoise],
       title=`g''' and the third derivatives of the first partial sums of the Fourier series of g` );
 ```
-![](../../img/LT6EXP39.gif)
+![](*<?=$rbase?>*/img/LT6EXP39.gif)
 
 __Summary__ of the preceding four plots:
 
@@ -447,7 +447,7 @@ __Summary__ of the preceding four plots:
       color=[black,blue,green,red,yellow,pink,navy,turquoise], title=`g'''` ):
   display(array(1..2,1..2, [[ep0,ep1],[ep2,ep3]]));
 ```
-![](../../img/LT6EXP40.gif)
+![](*<?=$rbase?>*/img/LT6EXP40.gif)
 
 The first three plots in this summary visualize the result on the locally uniform expansion
 of the functions in $W(-1,1)$ in terms of their Fourier series, which is proved in
@@ -484,7 +484,7 @@ Observe that the <a href="#function g">function g</a> given by $g(x) = (1-x)^2 \
 ```Mathematica
 > g2 := x -> (1-x^2)^2*ln(1-x^2);
 ```
-![](../../img/LT6EXP41.gif)
+![](*<?=$rbase?>*/img/LT6EXP41.gif)
 
 The oscillation of the <a href="#function g2">graph of g2</a> makes it necessary to consider partial sums up to the order 6 to obtain a suitable approximation.
 
@@ -493,7 +493,7 @@ The oscillation of the <a href="#function g2">graph of g2</a> makes it necessary
       color=[black,blue,green,red,yellow,pink,navy,turquoise,red],
       title=`g2(x) = (1-x^2)^2 ln(1-x^2) and the first partial sums of the Fourier series of g2` );
 ```
-![](../../img/LT6EXP42.gif)
+![](*<?=$rbase?>*/img/LT6EXP42.gif)
 
 The plot shows that the 4th partial sum (pink) nearly coincides with the 5th partial sum (navy), and that the 6th partial sum (turquoise) almost agrees with the 7th partial sum (red). This correponds with the fact, that the (normalized) odd order Fourier coefficients of g2 are small in relation to the even order Fourier coefficients:
 
@@ -501,7 +501,7 @@ The plot shows that the 4th partial sum (pink) nearly coincides with the 5th par
 > seq( evalf(wip(g2(x),K(i,1,10,x),1,10)/wip(K(i,1,10,x),
     K(i,1,10,x),1,10),2), i=0..12);
 ```
-![](../../img/LT6EXP43.gif)
+![](*<?=$rbase?>*/img/LT6EXP43.gif)
 
 The cause of this effect clearly is the symmetry of the
 <a href="#function g2">function g2</a>. Since g2 is an even function, since the
@@ -516,7 +516,7 @@ full symmetry and therefore we exactly have $\hbox{wip}(g2(x),K(i,1,1,x),1,1) = 
 > seq( evalf(wip(g2(x), K(i,1,1,x),1,1)/wip(K(i,1,1,x),
     K(i,1,1,x),1,1),2), i=0..12);
 ```
-![](../../img/LT6EXP44.gif)
+![](*<?=$rbase?>*/img/LT6EXP44.gif)
 
 We now turn back to the general Fourier series corresponding to the polynomials K(n,1,10, . ). Again, we obtain approximations of the
 <a href="#function g2">derivative g2'</a> as well by means of the derivatives of the Fourier series.
@@ -524,26 +524,26 @@ We now turn back to the general Fourier series corresponding to the polynomials 
 ```Mathematica
 > diff(g2(x),x);
 ```
-![](../../img/LT6EXP45.gif)
+![](*<?=$rbase?>*/img/LT6EXP45.gif)
 ```Mathematica
 plot( [diff(g2(x),x), seq(diff(krallseries(g2(x),i,1,10,x),x),i=0..6)], x=-1..1,
       color=[black,blue,green,red,yellow,pink,navy,turquoise],
       title=`g2' and the derivatives of the first partial sums of the Fourier series of g2` );
 ```
-![](../../img/LT6EXP46.gif)
+![](*<?=$rbase?>*/img/LT6EXP46.gif)
 
 Finally, we visualize the approximation of the <a href="#function g2">second derivative g2''</a>.
 
 ```Mathematica
 > diff(g2(x),x$2);
 ```
-![](../../img/LT6EXP47.gif)
+![](*<?=$rbase?>*/img/LT6EXP47.gif)
 ```Mathematica
 > plot( [diff(g2(x),x$2), seq(diff(krallseries(g2(x),i,1,10,x),x$2),i=0..8)], x=-1..1,
       color=[black,blue,green,red,yellow,pink,navy,turquoise,red,green],
       title=`g2'' and the second derivatives of the first partial sums of the Fourier series of g2` );
 ```
-![](../../img/LT6EXP48.gif)
+![](*<?=$rbase?>*/img/LT6EXP48.gif)
 
 Observe that the second derivative g2'' is unbounded at both end points of the interval $(-1,1)$. But nevertheless, the second derivative of the eighth partial sum of the Fourier series corresponding to the Krall polynomials supplies a suitable locally uniform approximation of this function.
 

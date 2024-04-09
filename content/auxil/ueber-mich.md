@@ -7,7 +7,7 @@ Zu Hause bin ich in Holzwickede, einer Gemeinde in der Nähe von Dortmund in Nor
 
 Seit dem 1. März 2001 arbeite ich für die MATERNA SE, ebenfalls in Dortmund.
 
-![](../../img/Vonhoff-Materna.jpg)
+![](*<?=$rbase?>*/img/Vonhoff-Materna.jpg)
 
 
 
