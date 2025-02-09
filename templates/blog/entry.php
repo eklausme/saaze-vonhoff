@@ -5,9 +5,7 @@
 <h1><?= $entry['title'] ?></h1>
 <?php
 	/*$entry['content']*/
-	$s = str_replace('*%3C?','<?',$entry['content']);
-	$s = str_replace('?%3E*','?>',$s);
-	require 'data:text/plain;base64,'.base64_encode($s);
+	eval( '?>' . str_replace('?%3E*','?>',str_replace('*%3C?','<?',$entry['content'])) );
 ?>
 	</article>
 	</main>
